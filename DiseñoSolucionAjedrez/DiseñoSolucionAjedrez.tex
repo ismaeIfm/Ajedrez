@@ -1,0 +1,174 @@
+\documentclass[12pt,spanish]{article}
+\usepackage[spanish,activeacute]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{graphicx}
+\oddsidemargin 0in
+\textwidth 6.75in
+\topmargin 0in 
+\textheight 8.5in
+\parindent 0em
+\parskip 1ex
+
+\title{Diseño del Problema: Ajedrez}
+\author{José Ismael Fernández Martínez}
+\date{29 de noviembre de 2011}
+\begin{document}
+
+\begin{center}
+
+{\LARGE \bf Universidad Nacional Autónoma de México}\\
+\vspace{1cm}
+{\LARGE \bf Facultad de Ciencias}\\
+\vspace{2.5cm}
+{\LARGE \bf Licenciatura en Ciencias de la Computación}\\
+\vspace{2.5cm}
+{\LARGE \bf Diseño del Problema: Ajedrez}\\
+\vspace{2.5cm}
+{\LARGE \bf José Ismael Fernández Martínez}\\
+\vspace{2.5cm}
+{\LARGE \bf 29 de noviembre de 2011}\\
+\vspace{2.5cm}
+{\LARGE \bf Semestre 2012-1 }\\
+
+\end{center}
+
+\newpage
+\section*{Contenido}
+
+\begin{itemize}
+
+\item Consideraciones para el diseño
+\item Diseño de la Solución 
+\item Consideraciones de la implementación
+\item Casos de prueba para el sistema
+
+\end{itemize}
+
+\newpage
+\section*{Consideraciones para el diseño}
+El lenguaje de programación que se utilizará es JAVA por su alto poder pórtale y fácil de que todos los usuario lo tengan en su computadora.\\
+Para el diseño de la solución se pretende crear una clase con la cual el usuario o los usuarios interactuaran con el sistema. Se necesitan crear clases donde se especifiquen las reglas de cada uno de los 3 juegos expuestos en el problema. Se utilizaran números y letras para identificar las casillas y que el usuario pueda elegirlas fácilmente.\\
+Se tendrá un clase Pieza la cual extenderá¡ a todas las piezas  que se pueden tener. Estas piezas se guardaran en un objeto casilla.
+
+
+\section*{Diseño de la Solución}
+Identificación de los objetos que dan solución a la implementación del juego. Sustantivos:
+\begin{itemize}
+
+\item Programa: No es tomado en cuenta como objeto ya que ya que el juego es un programa.
+\item Tablero de Ajedrez: Es un objeto, arreglo bidimensional de 8x8 casillas de color blancas o negras.
+\item Casilla:  Las casillas está¡n contenidas en el tablero, se consideran como un objeto ya que tienen bastante importancia debido a que contienen las piezas del juego. 
+\item Piezas: Son objetos muy importantes debido a que con ellas se realiza el juego, cada una tiene su grado de importancia y cada una tiene una serie de movimientos validos (Reina, Rey, Alfil, Torre, Caballo, y Peón). 
+\item Jugador: No es tomado en cuenta como objeto ya que es el usuario que jugará¡ con el
+juego una vez este terminado.
+\item Juego: No es tomado en cuenta como objeto ya que es lo que se tiene que programar.
+\item Programa: No es tomado en cuenta como objeto ya que ya que el juego es un programa y es lo que se va a realizar.
+\item Usuario: Es el que usara el programa una vez que este terminado.
+
+\end{itemize}
+\\
+
+Objetos identificados: Tablero de Ajedrez, Casilla, Piezas (Reina, Rey, Alfil, Torre, Caballo, y Peón).
+
+\subsection*{Detalle de cada objeto}
+\begin{itemize}
+
+\item{\bf Tablero de Ajedrez:} Es un cuadrado subdividido en 64 casillas cuadradas (8x8), alternativamente de color claro (blanco) y de color oscuro (negro). Cada jugador se sitúa de cara al ajedrecista contrincante, colocando el tablero de manera tal que cada jugador tenga una casilla blanca en su esquina derecha. Un tablero puede tener números y letras para identificar las filas, columnas y casillas.
+
+\item{\bf Casilla:} Almacenan a las piezas, una por casilla. Pueden ser claras o oscuras. Son representadas por números y letras para identificar su posición.
+
+\item{\bf Piezas:}
+\begin{description}
+\\
+\item[Reina:] Se puede mover en cualquier dirección avanzando o retrocediendo en el tablero el número de casillas que se desee, hasta encontrarse con otra pieza o el borde del tablero. 
+\item[Rey:] Se puede mover en cualquier dirección (vertical, horizontal y diagonales) avanzando o retrocediendo una sola casilla.
+\item[Alfil:] Sólo se puede mover en dirección diagonal, tantas casillas como se desee hasta encontrarse con otra pieza o el borde.
+\item[Caballo:] Se mueve avanzando 2 casillas en vertical y una en horizontal, o viceversa, realizando un movimiento de L, siendo la única pieza que puede saltar por encima de las demás piezas.
+\item[Torre:] Sólo se puede mover en las direcciones verticales y horizontales, no en diagonal, hasta topar con otra pieza o el borde del tablero.
+\item[Peón:] Puede avanzar una o dos casillas en dirección vertical en su primer movimiento, después de adelantado por primera vez sólo puede avanzar una casilla, a diferencia del resto de piezas no puede ir hacia atrás y no puede capturar a las piezas contrarias que se encuentran en la misma dirección en la que se mueve, el peón podrá capturar a las piezas que se encuentran a una casilla en diagonal respecto a él, no a las que están delante de ellos.
+
+\end{description}
+\end{itemize} 
+
+\subsection*{Comportamiento de los objetos}
+\begin{itemize}
+
+\item{Tablero de Ajedrez:} 
+\begin{itemize}
+\item Permite saber en cualquier momento si una casilla esta vacía o contiene alguna pieza.
+\item Permite mostrar el tablero en pantalla de una forma sencilla.
+\item Permite guardar o recuperar el estado del tablero por medio de serialización (se podrá cargar una partida anteriormente jugada).
+\end{itemize}
+
+\item{Casilla:}
+\begin{itemize}
+\item Guardará una pieza(Reina, Rey, Alfil, Caballo, Torre o Peón).
+\item Permite obtener la figura que guarda.
+\item Permitir saber su número o identificador(las casillas se construyen a partir de un identificador).
+\end{itemize}
+
+\item{Piezas}
+\begin{itemize}
+\item Tienen una representación como Cadena.
+\item Se construyen a partir de los movimientos válidos que cada una posee.
+\end{itemize}
+\end{itemize}
+
+\subsection*{Clases que contiene la solución de acuerdo a los pasos anteriores}
+En la imagen 1.0 se muestra la propuesta de clases que se implementarán en la solución al problema con sus respectivos atributos y métodos, así  como su relación en el siguiente diagrama de clases.
+
+\begin{figure}[h]
+\bf 1.0 Clases que contiene la solución de acuerdo a los pasos anteriores
+\includegraphics[width=500pt]{./Ajedrez.jpeg}
+\end{figure}
+\section*{Consideraciones de la implementación}
+Una interfaz sera usada para definir el objeto tablero de ajedrez, llamada TableroAjedrez. Sera implementada por una clase llamada UsaTableroAjedrez.\\
+\\
+Se usara herencia por generalización en todas las piezas (Reina, Rey; Alfil, Caballo, Torre, Peón), a partir de la clase Pieza.\\
+\\
+Se usaran nodos que almacenaran  una cadena que serán las que representen las coordenadas para referirse a una casilla del
+tablero de ajedrez.\\
+\\
+Se usara una interfaz ListaCadena para poder formar listas de cadenas que contendrán los movimientos posibles de una pieza a partir de su posición en el tablero de ajedrez. Serán listas debido que varían el numero de movimientos posibles de la pieza dependiendo de en que posición se encuentre la pieza.\\
+\\
+Existirá un método movimientoValido para toda pieza, que recibirá una coordenada de casilla en forma de cadena y regresa si es valido o no a donde se pretende mover la pieza, de acuerdo a la lista de movimientos validos.
+
+\section*{Caso de prueba para el sistema}
+\begin{enumerate}
+\subsection*{Ajedrez}
+\item inicia el juego, se da la bienvenida y se explican las reglas del juego.
+\item Se crean los jugadores.
+\item Usuario escribe nombres y elige colores(excepción).
+\item Comienza el juego.
+\item Jugador 1 elige ficha a mover y posición nueva (excepción).
+\item Jugador 2 elige ficha a mover y posición nueva (excepción).
+\item Se repiten los pasos 5 y .
+\item (opcional) Guardar el juego (excepción).
+\item (opcional) Cargar el juego (excepción).
+\item Se declara un ganador.
+\end{enumerate}
+
+\begin{enumerate}
+\subsection*{JuegoDeLas8Reinas}
+\item inicia el juego, se da la bienvenida y se explican las reglas del juego.
+\item Comienza el juego.
+\item Se coloca una pieza Reina en el tablero en alguna casilla
+\item Jugador elige donde colocar las siguiente Reina (excepción).
+\item Se repiten el paso 4 siete veces .
+\item (opcional) Guardar el juego (excepción).
+\item (opcional) Cargar el juego (excepción).
+\item Se verifica si gano o perdió.
+\end{enumerate}
+
+\subsection*{PaseoDelCaballo}
+\begin{enumerate}
+\item inicia el juego, se da la bienvenida y se explican las reglas del juego.
+\item Comienza el juego.
+\item Se coloca una pieza Caballo en el tablero en alguna casilla
+\item Jugador elige a donde mover el caballo y el juego verifica que esa casilla no haya sido ocupada (excepción).
+\item Se repiten el paso 4.
+\item (opcional) Guardar el juego (excepción).
+\item (opcional) Cargar el juego (excepción).
+\item Si el jugador no repite casillas gana el juego.
+\end{enumerate}
+\end{document}
